@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+Indic+Siyaq+Numbers&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <title>Calculator</title>
+  </head>
+  <body class="light-theme">
+    <div class="container">
+      <div class="calculator">
+        <form autocomplete="off">
+          <div class="display">
+            <input type="text" name="display" id="display" placeholder="0" />
+          </div>
+          <div class="themeToggle">
+            <label class="switch">
+              <input id="themeToggle" type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+            <p class="toggleText">SWITCH TO DARK MODE</p>
+          </div>
+          <div>
+            <input
+              type="button"
+              value="C"
+              id="yellow"
+              onclick="display.value = ''"
+            />
+            <input
+              type="button"
+              value="("
+              class="x-operators"
+              onclick="display.value += '('"
+            />
+            <input
+              type="button"
+              value=")"
+              class="x-operators"
+              onclick="display.value += ')'"
+            />
+            <input
+              type="button"
+              value="×"
+              class="b-operators"
+              onclick="display.value += '*'"
+            />
+          </div>
+          <div>
+            <input
+              type="button"
+              value="√"
+              class="x-operators"
+              onclick="display.value = Math.sqrt(display.value)"
+            />
+            <input
+              type="button"
+              value="%"
+              class="x-operators"
+              onclick="display.value = display.value / 100"
+            />
+            <input
+              type="button"
+              value="±"
+              class="x-operators"
+              onclick="display.value = -display.value"
+            />
+            <input
+              type="button"
+              value="÷"
+              class="b-operators"
+              onclick="display.value += '/'"
+            />
+          </div>
+          <div>
+            <input type="button" value="7" onclick="display.value += '7'" />
+            <input type="button" value="8" onclick="display.value += '8'" />
+            <input type="button" value="9" onclick="display.value += '9'" />
+            <input
+              type="button"
+              value="-"
+              class="b-operators"
+              onclick="display.value += '-'"
+            />
+          </div>
+          <div>
+            <input type="button" value="4" onclick="display.value += '4'" />
+            <input type="button" value="5" onclick="display.value += '5'" />
+            <input type="button" value="6" onclick="display.value += '6'" />
+            <input
+              type="button"
+              value="+"
+              class="b-operators"
+              onclick="display.value += '+'"
+            />
+          </div>
+          <div>
+            <input type="button" value="1" onclick="display.value += '1'" />
+            <input type="button" value="2" onclick="display.value += '2'" />
+            <input type="button" value="3" onclick="display.value += '3'" />
+          </div>
+          <div>
+            <input type="button" value="." onclick="display.value += '.'" />
+            <input type="button" value="0" onclick="display.value += '0'" />
+            <input
+              type="button"
+              value="DEL"
+              class="del"
+              onclick="display.value = display.value.toString().slice(0,-1)"
+            />
+            <input
+              type="button"
+              value="="
+              id="equal"
+              onclick="display.value = eval(display.value)"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
