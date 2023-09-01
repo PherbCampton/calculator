@@ -24,8 +24,8 @@
               id="display"
               placeholder="0"
               size="9"
+              maxlength="12"
               autofocus
-              maxlength="9"
             />
           </div>
           <div class="themeToggle">
@@ -46,19 +46,19 @@
               type="button"
               value="("
               class="x-operators"
-              onclick="display.value += '('"
+              onclick="display.value.length <= 11 ? display.value += '(' : display.value"
             />
             <input
               type="button"
               value=")"
               class="x-operators"
-              onclick="display.value += ')'"
+              onclick="display.value.length <= 11 ? display.value += ')' : display.value"
             />
             <input
               type="button"
               value="×"
               class="b-operators"
-              onclick="display.value += '*'"
+              onclick="display.value.length <= 11 ? display.value += '*' : display.value"
             />
           </div>
           <div>
@@ -84,39 +84,83 @@
               type="button"
               value="÷"
               class="b-operators"
-              onclick="display.value += '/'"
+              onclick="display.value.length <= 11 ? display.value += '/' : display.value"
             />
           </div>
           <div>
-            <input type="button" value="7" onclick="display.value += '7'" />
-            <input type="button" value="8" onclick="display.value += '8'" />
-            <input type="button" value="9" onclick="display.value += '9'" />
+            <input
+              type="button"
+              value="7"
+              onclick="display.value.length <= 11 ? display.value += '7' : display.value"
+            />
+            <input
+              type="button"
+              value="8"
+              onclick="display.value.length <= 11 ? display.value += '8' : display.value"
+            />
+            <input
+              type="button"
+              value="9"
+              onclick="display.value.length <= 11 ? display.value += '9' : display.value"
+            />
             <input
               type="button"
               value="-"
               class="b-operators"
-              onclick="display.value += '-'"
+              onclick="display.value.length <= 11 ? display.value += '-' : display.value"
             />
           </div>
           <div>
-            <input type="button" value="4" onclick="display.value += '4'" />
-            <input type="button" value="5" onclick="display.value += '5'" />
-            <input type="button" value="6" onclick="display.value += '6'" />
+            <input
+              type="button"
+              value="4"
+              onclick="display.value.length <= 11 ? display.value += '4' : display.value"
+            />
+            <input
+              type="button"
+              value="5"
+              onclick="display.value.length <= 11 ? display.value += '5' : display.value"
+            />
+            <input
+              type="button"
+              value="6"
+              onclick="display.value.length <= 11 ? display.value += '6' : display.value"
+            />
             <input
               type="button"
               value="+"
               class="b-operators"
-              onclick="display.value += '+'"
+              onclick="display.value.length <= 11 ? display.value += '+' : display.value"
             />
           </div>
           <div>
-            <input type="button" value="1" onclick="display.value += '1'" />
-            <input type="button" value="2" onclick="display.value += '2'" />
-            <input type="button" value="3" onclick="display.value += '3'" />
+            <input
+              type="button"
+              value="1"
+              onclick="display.value.length <= 11 ? display.value += '1' : display.value"
+            />
+            <input
+              type="button"
+              value="2"
+              onclick="display.value.length <= 11 ? display.value += '2' : display.value"
+            />
+            <input
+              type="button"
+              value="3"
+              onclick="display.value.length <= 11 ? display.value += '3' : display.value"
+            />
           </div>
           <div>
-            <input type="button" value="." onclick="display.value += '.'" />
-            <input type="button" value="0" onclick="display.value += '0'" />
+            <input
+              type="button"
+              value="."
+              onclick="display.value.length <= 11 ? display.value += '.' : display.value"
+            />
+            <input
+              type="button"
+              value="0"
+              onclick="display.value.length <= 11 ? display.value += '0' : display.value"
+            />
             <input
               type="button"
               value="DEL"

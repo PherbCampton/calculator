@@ -217,3 +217,31 @@ form input#equal {
 form input.del {
   font-size: 15px;
 }
+
+@media (min-width: 720px) {
+  .calculator form input {
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+  }
+
+  .themeToggle {
+    font-size: 14px;
+  }
+
+  .switch {
+    width: 63px;
+    height: 34px;
+    margin: 10px;
+  }
+
+  form input#equal {
+    height: 162px;
+    margin-top: -80px;
+  }
+
+  form input#display {
+    height: 120px;
+    max-width: 355px;
+  }
+}
