@@ -24,15 +24,3 @@ form.addEventListener("keypress", function (event) {
     equal.click();
   }
 });
-
-inputs.forEach((e) =>
-  e.addEventListener("click", function (event) {
-    event.preventDefault();
-    display.focus();
-  })
-);
-
-display.addEventListener("input", () => {
-  // When input changes, set the cursor position to the end
-  display.scrollRight = display.scrollWidth;
-});
