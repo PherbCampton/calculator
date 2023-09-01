@@ -56,7 +56,6 @@ body {
   background-image: var(--background-image);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
 }
 
 /* CONTAINER */
@@ -112,9 +111,10 @@ body {
 
 /* The switch - the box around the slider */
 .switch {
-  width: 50px;
+  width: 60px;
   height: 34px;
-  margin: 10px;
+  margin: 5px;
+  margin-right: 10px;
   position: relative;
   border-radius: 34px;
   display: inline-block;
