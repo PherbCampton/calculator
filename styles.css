@@ -210,7 +210,7 @@ form input#equal {
   height: 118px;
   position: absolute;
   margin-top: -57px;
-  margin-left: 12.5px;
+  margin-left: 9.5px;
   background-color: #9d2df5;
 }
 
@@ -237,6 +237,7 @@ form input.del {
   form input#equal {
     height: 133px;
     margin-top: -65px;
+    margin-left: 10px;
   }
 
   form input#display {
