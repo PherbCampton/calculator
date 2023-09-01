@@ -220,9 +220,9 @@ form input.del {
 
 @media (min-width: 720px) {
   .calculator form input {
-    width: 70px;
-    height: 70px;
-    margin: 10px;
+    width: 60px;
+    height: 60px;
+    margin: 5px;
   }
 
   .themeToggle {
@@ -232,16 +232,15 @@ form input.del {
   .switch {
     width: 63px;
     height: 34px;
-    margin: 10px;
   }
 
   form input#equal {
-    height: 162px;
-    margin-top: -80px;
+    height: 133px;
+    margin-top: -65px;
   }
 
   form input#display {
-    height: 120px;
-    max-width: 355px;
+    height: 100px;
+    max-width: 305px;
   }
 }
