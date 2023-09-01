@@ -55,14 +55,13 @@ body.dark-theme {
 body {
   background-image: var(--background-image);
   background-repeat: no-repeat;
-  background-size: cover;
 }
 
 /* CONTAINER */
 
 .container {
   display: flex;
-  min-height: 100vh;
+  min-height: 100dvh;
   align-items: center;
   flex-direction: column;
   justify-content: center;

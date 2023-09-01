@@ -16,9 +16,17 @@
   <body class="light-theme">
     <div class="container">
       <div class="calculator">
-        <form autocomplete="off">
+        <form autocomplete="off" onsubmit="event.preventDefault()">
           <div class="display">
-            <input type="text" name="display" id="display" placeholder="0" />
+            <input
+              type="text"
+              name="display"
+              id="display"
+              placeholder="0"
+              size="9"
+              autofocus
+              maxlength="9"
+            />
           </div>
           <div class="themeToggle">
             <label class="switch">
