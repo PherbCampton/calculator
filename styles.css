@@ -188,7 +188,8 @@ input:checked + .slider:before {
   flex-direction: column;
 }
 
-form input#display {
+form input#display,
+form input#display:disabled {
   display: flex;
   margin: 0;
   width: 100%;
@@ -207,6 +208,7 @@ form p.result {
   color: var(--primary-text-color);
   height: 20px;
   font-weight: 500;
+  max-width: 255px;
 }
 
 form input#yellow {
@@ -256,6 +258,10 @@ form input.del {
 
   form input#display {
     height: 100px;
+    max-width: 285px;
+  }
+
+  form p.result {
     max-width: 285px;
   }
 }
