@@ -18,161 +18,81 @@
       <div class="calculator">
         <form autocomplete="off" onsubmit="event.preventDefault()">
           <div class="display">
+            <p class="result"></p>
             <input
               type="text"
               name="display"
               id="display"
               placeholder="0"
-              size="9"
-              maxlength="11"
-              autofocus
+              disabled
             />
           </div>
-          <div class="themeToggle">
-            <label class="switch">
-              <input id="themeToggle" type="checkbox" />
-              <span class="slider round"></span>
-            </label>
-            <p class="toggleText">SWITCH TO DARK MODE</p>
-          </div>
-          <div>
-            <input
-              type="button"
-              value="C"
-              id="yellow"
-              onclick="display.value = ''"
-            />
-            <input
-              type="button"
-              value="("
-              class="x-operators"
-              onclick="display.value.length <= 10 ? display.value += '(' : display.value"
-            />
-            <input
-              type="button"
-              value=")"
-              class="x-operators"
-              onclick="display.value.length <= 10 ? display.value += ')' : display.value"
-            />
-            <input
-              type="button"
-              value="×"
-              class="b-operators"
-              onclick="display.value.length <= 10 ? display.value += '*' : display.value"
-            />
-          </div>
-          <div>
-            <input
-              type="button"
-              value="√"
-              class="x-operators"
-              onclick="display.value = Math.sqrt(display.value)"
-            />
-            <input
-              type="button"
-              value="%"
-              class="x-operators"
-              onclick="display.value = display.value / 100"
-            />
-            <input
-              type="button"
-              value="±"
-              class="x-operators"
-              onclick="display.value = -display.value"
-            />
-            <input
-              type="button"
-              value="÷"
-              class="b-operators"
-              onclick="display.value.length <= 10 ? display.value += '/' : display.value"
-            />
-          </div>
-          <div>
-            <input
-              type="button"
-              value="7"
-              onclick="display.value.length <= 10 ? display.value += '7' : display.value"
-            />
-            <input
-              type="button"
-              value="8"
-              onclick="display.value.length <= 10 ? display.value += '8' : display.value"
-            />
-            <input
-              type="button"
-              value="9"
-              onclick="display.value.length <= 10 ? display.value += '9' : display.value"
-            />
-            <input
-              type="button"
-              value="-"
-              class="b-operators"
-              onclick="display.value.length <= 10 ? display.value += '-' : display.value"
-            />
-          </div>
-          <div>
-            <input
-              type="button"
-              value="4"
-              onclick="display.value.length <= 10 ? display.value += '4' : display.value"
-            />
-            <input
-              type="button"
-              value="5"
-              onclick="display.value.length <= 10 ? display.value += '5' : display.value"
-            />
-            <input
-              type="button"
-              value="6"
-              onclick="display.value.length <= 10 ? display.value += '6' : display.value"
-            />
-            <input
-              type="button"
-              value="+"
-              class="b-operators"
-              onclick="display.value.length <= 10 ? display.value += '+' : display.value"
-            />
-          </div>
-          <div>
-            <input
-              type="button"
-              value="1"
-              onclick="display.value.length <= 10 ? display.value += '1' : display.value"
-            />
-            <input
-              type="button"
-              value="2"
-              onclick="display.value.length <= 10 ? display.value += '2' : display.value"
-            />
-            <input
-              type="button"
-              value="3"
-              onclick="display.value.length <= 10 ? display.value += '3' : display.value"
-            />
-          </div>
-          <div>
-            <input
-              type="button"
-              value="."
-              onclick="display.value.length <= 11 ? display.value += '.' : display.value"
-            />
-            <input
-              type="button"
-              value="0"
-              onclick="display.value.length <= 11 ? display.value += '0' : display.value"
-            />
-            <input
-              type="button"
-              value="DEL"
-              class="del"
-              onclick="display.value = display.value.toString().slice(0,-1)"
-            />
-            <input
-              type="button"
-              value="="
-              id="equal"
-              onclick="display.value = eval(display.value)"
-            />
+          <div class="buttons">
+            <div class="flex border">
+              <div class="themeToggle">
+                <label class="switch">
+                  <input id="themeToggle" type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+                <p class="toggleText">SWITCH THEME</p>
+              </div>
+              <input type="button" value="C" id="yellow" />
+            </div>
+            <div class="border">
+              <input type="button" value="√" class="x-operators" />
+              <input type="button" value="%" class="x-operators" />
+              <input
+                type="button"
+                value="±"
+                class="x-operators"
+                onclick="display.value = -display.value"
+              />
+              <input
+                type="button"
+                value="×"
+                class="b-operators"
+                data-operation="*"
+              />
+            </div>
+            <div class="border">
+              <input type="button" value="7" />
+              <input type="button" value="8" />
+              <input type="button" value="9" />
+              <input
+                type="button"
+                value="÷"
+                class="b-operators"
+                data-operation="/"
+              />
+            </div>
+            <div>
+              <input type="button" value="4" />
+              <input type="button" value="5" />
+              <input type="button" value="6" />
+              <input
+                type="button"
+                value="-"
+                class="b-operators"
+                data-operation="-"
+              />
+            </div>
+            <div>
+              <input type="button" value="1" />
+              <input type="button" value="2" />
+              <input type="button" value="3" />
+              <input
+                type="button"
+                value="+"
+                class="b-operators"
+                data-operation="+"
+              />
+            </div>
+            <div>
+              <input type="button" value="." />
+              <input type="button" value="0" />
+              <input type="button" value="DEL" class="del" />
+              <input type="button" value="=" id="equal" />
+            </div>
           </div>
         </form>
       </div>
