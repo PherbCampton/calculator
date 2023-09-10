@@ -1,3 +1,4 @@
+// Get references to HTML elements
 const themeToggle = document.getElementById("themeToggle");
 const toggleText = document.querySelector(".toggleText");
 const equal = document.querySelector("#equal");
@@ -8,16 +9,17 @@ const resultEL = document.querySelector(".result");
 const body = document.body;
 const root = document.documentElement;
 
-let result = "";
-let current = "";
-let inputDisplay = "";
-let evaluation = false;
-let basicOperations = { "+": "+", "/": "/", "*": "*", "-": "-" };
+// Initialize variables
+let result = ""; // Stores the current mathematical expression
+let current = ""; // Stores the current user input
+let inputDisplay = ""; // Displays the user input and result
+let evaluation = false; // Flag to indicate if an evaluation is in progress
+let basicOperations = { "+": "+", "/": "/", "*": "*", "-": "-" }; // Basic arithmetic operations
 
+// Set a CSS variable to match the width of the result element
 root.style.setProperty("--width-to-match", `${resultEL.clientWidth}px`);
 
-// THEME TOGGLE FUNCTIONALITY
-
+// Theme toggle functionality
 const theme = (theme, inverse = theme === "dark" ? "light" : "dark") => {
   themeToggle.checked = theme === "dark" ? true : false;
   body.classList.remove(`${inverse}-theme`);
@@ -32,6 +34,7 @@ function themeSwitch() {
 
 themeToggle.addEventListener("click", themeSwitch);
 
+// Retrieve saved theme from local storage
 const savedTheme = localStorage.getItem("theme");
 
 if (savedTheme) {
@@ -40,8 +43,7 @@ if (savedTheme) {
   else theme("light");
 }
 
-// ENTER BUTTON PERFORMS EVALUATION
-
+// Handle Enter key to trigger evaluation
 form.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
@@ -49,6 +51,7 @@ form.addEventListener("keypress", function (e) {
   }
 });
 
+// Function to format numbers with a digit threshold
 function formatted(number, digitThreshold = 10) {
   const digitCount = `${number}`.replace(/^0+|\.+/g, "").length;
   if (digitCount > digitThreshold) {
@@ -58,9 +61,11 @@ function formatted(number, digitThreshold = 10) {
   }
 }
 
+// Event listener for button clicks
 buttons.addEventListener("click", function (e) {
-  // TARGETTING EQUAL TO BUTTON
+  // Handle equal button click
   if (e.target.value === "=") {
+    // Check for basic operations in the result
     Object.keys(basicOperations).forEach((n) => {
       if (result.split("").includes(n)) {
         if (basicOperations.hasOwnProperty(result.at(-1)) && current) {
@@ -73,13 +78,13 @@ buttons.addEventListener("click", function (e) {
     });
   }
 
-  // TARGETTING CLEAR ALL (C) BUTTON
+  // Handle clear button click
   if (e.target.value === "C") {
     inputDisplay = result = current = "";
     evaluation = false;
   }
 
-  // TARGETTING SQUARE ROOT, PERCENTAGE AND MINUS/PLUS (√, %, ±) BUTTON
+  // Handle square root, percentage, and plus/minus button clicks
   if (
     (e.target.value === "√" ||
       e.target.value === "%" ||
@@ -109,13 +114,13 @@ buttons.addEventListener("click", function (e) {
     }
   }
 
-  // TARGETTING BACKSPACE (DEL) TO BUTTON
+  // Handle backspace button click
   if (e.target.value === "DEL") {
     current = current.toString().slice(0, -1);
     inputDisplay = current;
   }
 
-  // TARGETTING ALL NUMBER BUTTONS
+  // Handle number button clicks
   if (!isNaN(+e.target.value)) {
     if (
       result.split("").includes("√") ||
@@ -136,7 +141,7 @@ buttons.addEventListener("click", function (e) {
     evaluation = false;
   }
 
-  // TARGETTING BASIC OPERATION (+,-,/,*) BUTTONS
+  // Handle basic operation button clicks
   if (e.target.classList.contains("b-operators")) {
     if (
       result.split("").includes("√") ||
@@ -159,7 +164,7 @@ buttons.addEventListener("click", function (e) {
     }
   }
 
-  // TARGETTING DOT (.) BUTTON
+  // Handle dot button click
   if (e.target.value === ".") {
     if (current === "") {
       inputDisplay = current = 0 + e.target.value;
@@ -170,6 +175,7 @@ buttons.addEventListener("click", function (e) {
     }
   }
 
+  // Update result and display
   resultEL.textContent = result.replace(/^0+(?!\.)/, "");
   display.value = inputDisplay.startsWith(".")
     ? "0" + inputDisplay.replace(/^0+(?!\.)/, "")
