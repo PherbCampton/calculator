@@ -243,6 +243,7 @@ form input.del {
   font-size: 15px;
 }
 
+/* RESPONSIVENESS */
 @media (min-width: 720px) {
   .calculator form input {
     width: 60px;

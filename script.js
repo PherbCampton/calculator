@@ -1,6 +1,5 @@
 // Get references to HTML elements
 const themeToggle = document.getElementById("themeToggle");
-const toggleText = document.querySelector(".toggleText");
 const equal = document.querySelector("#equal");
 const form = document.querySelector("form");
 const display = document.getElementById("display");
@@ -62,16 +61,18 @@ function formatted(number, digitThreshold = 10) {
 }
 
 // Event listener for button clicks
-buttons.addEventListener("click", function (e) {
-  // Handle equal button click
+buttons.addEventListener("click", (e) => {
+  //handle equal button
   if (e.target.value === "=") {
-    // Check for basic operations in the result
+    //check for basic operations in the result
     Object.keys(basicOperations).forEach((n) => {
       if (result.split("").includes(n)) {
         if (basicOperations.hasOwnProperty(result.at(-1)) && current) {
           evaluation = true;
           result += current.replace(/^0+(?!\.)/, "") || "0";
-          inputDisplay = `= ` + `${formatted(eval(result))}`;
+          inputDisplay = isNaN(formatted(eval(result)))
+            ? `Bad Expression`
+            : "= " + `${formatted(eval(result))}`;
           current = "";
         }
       }
@@ -84,16 +85,23 @@ buttons.addEventListener("click", function (e) {
     evaluation = false;
   }
 
+  // Handle backspace button click
+  if (e.target.value === "DEL") {
+    current = current.toString().slice(0, -1);
+    inputDisplay = formatted(+current);
+  }
+
   // Handle square root, percentage, and plus/minus button clicks
   if (
     (e.target.value === "√" ||
       e.target.value === "%" ||
       e.target.value === "±") &&
     inputDisplay !== "" &&
-    inputDisplay !== "0"
+    inputDisplay !== "0" &&
+    !/^0+$/.test(current)
   ) {
     if (evaluation === true) {
-      current = eval(result);
+      current = `${eval(result)}`;
       evaluation = false;
     }
     if (
@@ -101,23 +109,17 @@ buttons.addEventListener("click", function (e) {
       !basicOperations.hasOwnProperty(result.at(-1))
     ) {
       result =
-        e.target.value === "√" || e.target.value === "±"
-          ? e.target.value + current
-          : current + e.target.value;
+        e.target.value === "%"
+          ? current.replace(/^0+(?!\.)/, "") + e.target.value
+          : e.target.value + current.replace(/^0+(?!\.)/, "");
       current =
         e.target.value === "√"
-          ? `${formatted(Math.sqrt(eval(current)))}`
+          ? `${formatted(Math.sqrt(eval(current.replace(/^0+(?!\.)/, ""))))}`
           : e.target.value === "%"
-          ? `${formatted(eval(current / 100))}`
-          : `${formatted(eval(-current))}`;
-      inputDisplay = `= ` + current;
+          ? `${formatted(eval(current.replace(/^0+(?!\.)/, "") / 100))}`
+          : `${formatted(eval(-current.replace(/^0+(?!\.)/, "")))}`;
+      inputDisplay = isNaN(current) ? `Bad Expression` : `= ` + current;
     }
-  }
-
-  // Handle backspace button click
-  if (e.target.value === "DEL") {
-    current = current.toString().slice(0, -1);
-    inputDisplay = current;
   }
 
   // Handle number button clicks
@@ -137,7 +139,7 @@ buttons.addEventListener("click", function (e) {
       result = current;
     }
     current += e.target.value;
-    inputDisplay = current;
+    inputDisplay = formatted(+current);
     evaluation = false;
   }
 
